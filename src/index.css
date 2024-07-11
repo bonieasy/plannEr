@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Alguns navegadores que criando largura minima, assim nos controlamos a largura */
+* {
+    min-width: 0;
+}
