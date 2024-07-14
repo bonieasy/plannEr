@@ -4,9 +4,11 @@ import { FormEvent } from "react";
 interface ConfirmTripModalProps {
     closeConfirmTripModal: () => void;
     createTrip: (event: FormEvent<HTMLFormElement>) => void;
+    setOwnerEmail: (email: string) => void;
+    setOwnerName: (name: string) => void;
 }
 
-export function ConfirmTripModal({ closeConfirmTripModal, createTrip}: ConfirmTripModalProps) {
+export function ConfirmTripModal({ closeConfirmTripModal, createTrip, setOwnerEmail, setOwnerName}: ConfirmTripModalProps) {
     return (
         <div className='fixed inset-0 bg-black/60 flex items-center justify-center'>
           <div className='w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
@@ -28,7 +30,9 @@ export function ConfirmTripModal({ closeConfirmTripModal, createTrip}: ConfirmTr
                   className="bg-transparent text-lg
                   placeholder-zinc-400 outline-none flex-1"
                   name='name'
-                  placeholder="Seu nome completo" />
+                  placeholder="Seu nome completo"
+                  onChange={event => setOwnerName(event.target.value)}
+                />
               </div>
               <div className='h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2'>
               <Mail />
@@ -37,7 +41,9 @@ export function ConfirmTripModal({ closeConfirmTripModal, createTrip}: ConfirmTr
                   placeholder-zinc-400 outline-none flex-1"
                   type="email"
                   name='email'
-                  placeholder="Seu e-mail pessoal" />
+                  placeholder="Seu e-mail pessoal"
+                  onChange={event => setOwnerEmail(event.target.value)}
+                />
                 </div>
               
               <button type='submit' className="bg-lime-300 w-full text-lime-950 rounded-lg px-5 h-11 font-medium flex items-center justify-center gap-2 hover:bg-lime-400">
